@@ -1,0 +1,167 @@
+# chọn database để thao tác
+USE db_movie
+		  CREATE TABLE NguoiDung(
+			tai_khoan INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ho_ten VARCHAR(255) NOT NULL,
+			email VARCHAR(255) NOT NULL,
+			so_dt VARCHAR(50) NOT NULL,
+			mat_khau VARCHAR(255) NOT NULL,
+			loai_nguoi_dung VARCHAR(200) NOT NULL
+		);
+		INSERT INTO NguoiDung (ho_ten, email, so_dt, mat_khau, loai_nguoi_dung)
+VALUES
+    ('Người dùng 1', 'user1@example.com', '1234567890', 'password1', 'admin'),
+    ('Người dùng 2', 'user2@example.com', '0987654321', 'password2', 'admin'),
+    ('Người dùng 3', 'user3@example.com', '0932432323', 'password3', 'guest'),
+    ('Người dùng 4', 'user4@example.com', '0983443341', 'password4', 'guest'),
+    ('Người dùng 5', 'user5@example.com', '0987244321', 'password5', 'admin'),
+    ('Người dùng 6', 'user6@example.com', '0982432333', 'password6', 'guest'),
+    ('Người dùng 7', 'user7@example.com', '0383244324', 'password7', 'guest'),
+    ('Người dùng 8', 'user8@example.com', '0487234342', 'password8', 'guest'),
+    ('Người dùng 9', 'user9@example.com', '0947652343', 'password9', 'guest'),
+	('Người dùng 10', 'user10@example.com', '9876543210', 'password10', 'admin');
+
+				CREATE TABLE Phim (
+			ma_phim INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ten_phim VARCHAR(200) NOT NULL,
+			trailer VARCHAR(200) NOT NULL,
+			hinh_anh VARCHAR(200) NOT NULL,
+			mo_ta VARCHAR(200) NOT NULL,
+			ngay_khoi_chieu DATETIME NOT NULL,
+			danh_gia INT NOT NULL,
+			hot BOOLEAN NOT NULL,
+			dang_chieu BOOLEAN NOT NULL,
+			sap_chieu BOOLEAN NOT NULL,
+			createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+			updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+		);
+INSERT INTO Phim (ten_phim, trailer, hinh_anh, mo_ta, ngay_khoi_chieu, danh_gia, hot, dang_chieu, sap_chieu)
+VALUES
+    ('Người nhện', 'trailer1.mp4', 'image1.jpg', 'Mô tả phim 1', '2023-10-25 10:00:00', 4, 1, 1, 0),
+    ('Người dơi', 'trailer2.mp4', 'image2.jpg', 'Mô tả phim 2', '2023-10-26 10:00:00', 5, 1, 0, 1),
+    ('Người kiến', 'trailer3.mp4', 'image3.jpg', 'Mô tả phim 3', '2023-10-26 10:00:00', 5, 1, 1, 1),
+    ('Người cá', 'trailer4.mp4', 'image4.jpg', 'Mô tả phim 4', '2023-10-26 10:00:00', 3, 1, 1, 1),
+    ('Người hùng', 'trailer5.mp4', 'image5.jpg', 'Mô tả phim 5', '2023-10-26 10:00:00', 4, 1, 0, 1),
+    ('Người nghèo', 'trailer6.mp4', 'image6.jpg', 'Mô tả phim 6', '2023-10-26 10:00:00', 5, 1, 1, 1);
+
+
+		CREATE TABLE HeThongRap(
+			ma_he_thong_rap INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ten_he_thong_rap VARCHAR(255) NOT NULL,
+			logo VARCHAR(200) NOT NULL
+		);
+		INSERT INTO HeThongRap (ten_he_thong_rap, logo)
+VALUES
+    ('Hệ thống CGV', 'logo1.jpg'),
+    ('Hệ thống GALAXY', 'logo2.jpg'),
+    ('Hệ thống Beta', 'logo3.jpg'),
+    ('Hệ thống Lotteria', 'logo4.jpg'),
+    ('Hệ thống BHD', 'logo5.jpg');
+
+		CREATE TABLE Banner(
+			ma_banner INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ma_phim INT NOT NULL,
+			hinh_anh VARCHAR(255),
+			FOREIGN KEY (ma_phim) REFERENCES Phim(ma_phim)
+		);
+		INSERT INTO Banner (ma_phim, hinh_anh)
+VALUES
+    (1, 'banner1.jpg'),
+    (2, 'banner2.jpg'),
+    (3, 'banner3.jpg'),
+    (4, 'banner4.jpg'),
+    (5, 'banner5.jpg'),
+    (6, 'banner6.jpg');
+CREATE TABLE CumRap (
+    ma_cum_rap INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    ten_cum_rap VARCHAR(200) NOT NULL,
+    dia_chi VARCHAR(200) NOT NULL,
+    ma_he_thong_rap INT NOT NULL,
+    FOREIGN KEY (ma_he_thong_rap) REFERENCES HeThongRap(ma_he_thong_rap)
+);
+
+INSERT INTO CumRap (ten_cum_rap, dia_chi, ma_he_thong_rap)
+VALUES
+    ('Quận 1', 'Địa chỉ 1', 1),
+    ('Quận 2', 'Địa chỉ 2', 2),
+    ('Quận 3', 'Địa chỉ 3', 3),
+    ('Quận 4', 'Địa chỉ 4', 4),
+    ('Quận 5', 'Địa chỉ 5', 5);
+
+		 CREATE TABLE RapPhim (
+			ma_rap INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ten_rap VARCHAR(255) NOT NULL,
+			ma_cum_rap INT NOT NULL,
+			FOREIGN KEY (ma_cum_rap) REFERENCES CumRap(ma_cum_rap)
+		);
+		INSERT INTO RapPhim (ten_rap, ma_cum_rap)
+VALUES
+    ('Tên rạp 1', 1),
+    ('Tên rạp 2', 2),
+    ('Tên rạp 3', 3),
+    ('Tên rạp 4', 4),
+    ('Tên rạp 5', 5);
+
+CREATE TABLE DatVe (
+    ma_dat_ve INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tai_khoan INT NOT NULL,
+    ma_lich_chieu INT NOT NULL,
+    ma_ghe INT NOT NULL,
+    FOREIGN KEY (tai_khoan) REFERENCES NguoiDung(tai_khoan),
+    FOREIGN KEY (ma_lich_chieu) REFERENCES LichChieu(ma_lich_chieu),
+    FOREIGN KEY (ma_ghe) REFERENCES Ghe(ma_ghe)
+);
+
+INSERT INTO DatVe (tai_khoan, ma_lich_chieu, ma_ghe)
+VALUES
+    (1, 1, 1),
+    (1, 1, 2),
+    (2, 2, 3),
+    (2, 2, 4),
+    (3, 3, 5),
+    (3, 3, 6),
+    (4, 4, 7),
+    (4, 4, 8),
+    (5, 5, 9),
+    (5, 5, 10);
+
+
+		CREATE TABLE LichChieu(
+			ma_lich_chieu INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ma_rap INT NOT NULL,
+			ma_phim INT NOT NULL,
+			ngay_gio_chieu DATETIME DEFAULT NULL,
+			gia_ve INT NOT NULL,
+			FOREIGN KEY (ma_rap) REFERENCES RapPhim(ma_rap),
+			FOREIGN KEY (ma_phim) REFERENCES Phim(ma_phim)
+		);
+		INSERT INTO LichChieu (ma_rap, ma_phim, ngay_gio_chieu, gia_ve)
+VALUES
+    (1, 1, '2023-10-25 10:00:00', 100000),
+    (2, 2, '2023-10-26 12:00:00', 120000),
+    (3, 3, '2023-10-27 14:00:00', 150000),
+    (4, 4, '2023-10-28 16:00:00', 130000),
+    (5, 5, '2023-10-29 18:00:00', 110000),
+    (1, 6, '2023-10-30 20:00:00', 160000);
+
+		CREATE TABLE Ghe(
+			ma_ghe INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			ten_ghe VARCHAR(100) NOT NULL,
+			loai_ghe VARCHAR(100) NOT NULL,
+			ma_rap INT,
+			FOREIGN KEY (ma_rap) REFERENCES RapPhim(ma_rap)
+		);
+		INSERT INTO Ghe (ten_ghe, loai_ghe, ma_rap)
+VALUES
+    ('Ghế A1', 'Ghế thường', 1),
+    ('Ghế A2', 'Ghế thường', 1),
+    ('Ghế B1', 'Ghế VIP', 2),
+    ('Ghế B2', 'Ghế VIP', 2),
+    ('Ghế C1', 'Ghế thường', 3),
+    ('Ghế C2', 'Ghế thường', 3),
+    ('Ghế D1', 'Ghế VIP', 4),
+    ('Ghế D2', 'Ghế VIP', 4),
+    ('Ghế E1', 'Ghế thường', 5),
+    ('Ghế E2', 'Ghế thường', 5),
+    ('Ghế F1', 'Ghế VIP', 3),
+    ('Ghế F2', 'Ghế VIP', 2);
