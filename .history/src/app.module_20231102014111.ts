@@ -1,0 +1,30 @@
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { UsersModule } from './users/users.module';
+import { BookingModule } from './booking/booking.module';
+import { FilmModule } from './film/film.module';
+import { ConfigModule } from '@nestjs/config';
+import { JwtStrategy } from './strategy/jwt.strategy';
+import { CinemaSystemModule } from './cinema-system/cinema-system.module';
+import { CinemaComplexModule } from './cinema-complex/cinema-complex.module';
+import { AuthModule } from './auth/auth.module';
+
+
+@Module({
+  imports: [
+    UsersModule, 
+    BookingModule, 
+    FilmModule, 
+    CinemaModule, 
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }), CinemaSystemModule, CinemaComplexModule, AuthModule
+    ],
+  controllers: [AppController],
+  providers: [
+    AppService,
+    JwtStrategy
+  ],
+})
+export class AppModule {}
