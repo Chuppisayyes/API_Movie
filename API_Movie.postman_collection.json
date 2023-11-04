@@ -1,0 +1,502 @@
+{
+	"info": {
+		"_postman_id": "cccf3f07-f89c-4c78-887a-a3f3993d55cc",
+		"name": "API_Movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26293599"
+	},
+	"item": [
+		{
+			"name": "Quản Lý Đặt Vé",
+			"item": [
+				{
+					"name": "Danh sách Phòng Vé",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Đặt Vé",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}booking/DatVe",
+							"host": [
+								"{{DomainMovie}}booking"
+							],
+							"path": [
+								"DatVe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tạo Lịch Chiếu",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lý Người Dùng",
+			"item": [
+				{
+					"name": "Lấy danh sách loại người dùng",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/LayDanhSachLoaiNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"LayDanhSachLoaiNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng Nhập",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/DangNhap",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"DangNhap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng ký",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/DangKy",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"DangKy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Danh Sách Người Dùng",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Danh Sách Người Dùng Phân Trang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer aeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoibm9kZSAyOSIsImlhdCI6MTY5OTA3ODkwMCwiZXhwIjoxNjk5MTA3NzAwfQ.tokCN8c4dcafmr-D7T5-RdD39H5QIrXZR_L_4h9qr7M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DomainMovie}}users/LayDanhSachNguoiDungPhanTrang",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"LayDanhSachNguoiDungPhanTrang"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tìm Kiếm Người Dùng",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/TimKiemNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"TimKiemNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tìm Kiếm Người Dùng Phân Trang",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Thông Tin Tài Khoản",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoibm9kZSAyOSIsImlhdCI6MTY5OTA4Mzk4MiwiZXhwIjoxNjk5MTEyNzgyfQ.cnh-QI_DczUUkyILTsngvjRxtlDat2KOvdV7XXCPzLY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DomainMovie}}users/ThongTinTaiKhoan?id=10",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"ThongTinTaiKhoan"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Thông Tin Người Dùng",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlfa2hvYW4iOjExLCJlbWFpbCI6InRlb2NvZGVyQGV4YW1wbGUuY29tIiwiaWF0IjoxNjk5MDg4ODc3LCJleHAiOjE2OTkxMTc2Nzd9.yXWLBjjUWuojQfFSKVyZpyvMyv7-3btdKr8aMFP7KWY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DomainMovie}}users/LayThongTinNguoiDung/:11",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"LayThongTinNguoiDung",
+								":11"
+							],
+							"variable": [
+								{
+									"key": "11",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Thêm Người Dùng",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/ThemNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"ThemNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cập Nhật Thông Tin Người Dùng Theo ID Params",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/CapNhatThongTinNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"CapNhatThongTinNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cập Nhật Thông Tin Người Dùng",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/CapNhatThongTinNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"CapNhatThongTinNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xóa Người Dùng",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}users/XoaNguoiDung",
+							"host": [
+								"{{DomainMovie}}users"
+							],
+							"path": [
+								"XoaNguoiDung"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lý Phim",
+			"item": [
+				{
+					"name": "Danh Sách Banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/LayDanhSachBanner",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"LayDanhSachBanner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Danh Sách Phim",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Danh Sách Phim Phân Trang",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Danh Sách Phim Theo Ngày",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/LayDanhSachPhimTheoNgay",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"LayDanhSachPhimTheoNgay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Hình Cho Phim",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/UploadHinhChoPhim",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"UploadHinhChoPhim"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cập Nhật Phim",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/CapNhatPhim",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"CapNhatPhim"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tìm Phim Theo Tên",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/TimPhimTheoTen",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"TimPhimTheoTen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xóa Phim Theo Tên",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DomainMovie}}film/XoaPhimTheoTen",
+							"host": [
+								"{{DomainMovie}}film"
+							],
+							"path": [
+								"XoaPhimTheoTen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Thông Tin Phim",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lý Rạp",
+			"item": [
+				{
+					"name": "Lấy Thông Tin Theo Hệ Thống Rạp",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Thông Tin Cụm Rạp Theo Hệ Thống",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Thông Tin Lịch Chiếu Hệ Thống Rạp",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Thông Tin Lịch Chiếu Phim",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DomainMovie",
+			"value": "localhost:8088/api/"
+		}
+	]
+}
